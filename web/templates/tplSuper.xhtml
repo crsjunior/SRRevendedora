@@ -8,17 +8,18 @@
 
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<h:outputStylesheet name="./css/default.css"/>
 		<h:outputStylesheet name="./css/cssLayout.css"/>
 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/site.css" />
-		<title>SR Revendedora</title>
+		<title>#{msg.titulo_pagina}</title>
 	</h:head>
 
 	<h:body>
 		<f:view>
 			<h:form id="frm" prependId="false">
 				<p:menubar>
-					<p:menuitem value="SR Revendedora" action="index" immediate="true" icon="icone-carro" />
+					<p:menuitem value="#{msg.titulo_aplicacao}" action="index" immediate="true" icon="icone-carro" />
 
 					<p:submenu label="Consultas" rendered="#{sessaoMB.logado}">
 						<p:menuitem value="Consultar vendas" ajax="false" immediate="true" action="listarVenda" icon="icone-venda" />
