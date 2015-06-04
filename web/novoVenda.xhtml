@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./templates/tplConteudo.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="deck">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{sessaoMB.checarLogin()}" />
+		</f:metadata>
+		<h4>Nova venda</h4>
+		<p:commandButton value="Salvar" ajax="false" action="#{vendaMB.salvar()}" />
+	</ui:define>
+
+	<ui:define name="acao">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{vendaMB.setIdUsuario(sessaoMB.usuario.idUsuario)}" />
+		</f:metadata>
+		<h:inputHidden id="usuario" value="#{sessaoMB.usuario.idUsuario}" />
+		
+		<p:panelGrid columns="3" styleClass="pnlGrid">
+			<p:outputLabel for="cliente" value="Cliente:" />
+			<p:selectOneMenu id="cliente" value="#{vendaMB.idCliente}" styleClass="campo-lista">
+				<f:selectItems value="#{vendaMB.listaClientes}" var="cliente" itemLabel="#{cliente.nome}" itemValue="#{cliente.idCliente}" />
+			</p:selectOneMenu>
+			<h:message for="cliente" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="veiculo" value="Veículo:" />
+			<p:selectOneMenu id="veiculo" value="#{vendaMB.idVeiculo}" styleClass="campo-lista">
+				<f:selectItems value="#{vendaMB.listaVeiculos}" var="veiculo" itemLabel="#{veiculo.modelo}" itemValue="#{veiculo.idVeiculo}" />
+			</p:selectOneMenu>
+			<h:message for="veiculo" styleClass="mensagem-validacao" />
+		</p:panelGrid>
+	</ui:define>
+
+</ui:composition>

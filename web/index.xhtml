@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./templates/tplSuper.xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{sessaoMB.checarLogin()}" />
+		</f:metadata>
+		<div style="margin-top: 150px; vertical-align: middle; text-align: center;">
+			<img src="./images/carro-grande.png" height="100" />
+			<h1 style="border: none; font-size: 40px;">SR Revendedora</h1><br /><br />
+			Trabalho de Programação para Internet 2<br /><br />
+			Alunos: Carlos Schwarz e Rafael Rodrigues<br /><br />
+			Instituição: Faculdade Senac POA-RS<br /><br />
+			Professor: Rafael Lossurdo<br /><br />
+			Ano: 2015
+		</div>
+	</ui:define>
+
+</ui:composition>

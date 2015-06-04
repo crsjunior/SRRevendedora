@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./templates/tplConteudo.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="deck">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{sessaoMB.checarLogin()}" />
+		</f:metadata>
+		<h4>Novo cliente</h4>
+		<p:commandButton value="Salvar" ajax="false" action="#{clienteMB.salvar()}" />
+	</ui:define>
+
+	<ui:define name="acao">
+		<p:panelGrid columns="3" styleClass="pnlGrid">
+			<p:outputLabel for="nome" value="Nome:" />
+			<p:inputText id="nome" value="#{clienteMB.cliente.nome}" validator="#{clienteMB.validar}" styleClass="campo" />
+			<h:message for="nome" styleClass="mensagem-validacao" />
+			
+			<p:outputLabel for="cpf" value="CPF:" />
+			<p:inputText id="cpf" value="#{clienteMB.cliente.cpf}" validator="#{clienteMB.validar}" styleClass="campo" />
+			<h:message for="cpf" styleClass="mensagem-validacao" />
+			
+			<p:outputLabel for="endereco" value="Endereço:" />
+			<p:inputText id="endereco" value="#{clienteMB.cliente.endereco}" validator="#{clienteMB.validar}" styleClass="campo" />
+			<h:message for="endereco" styleClass="mensagem-validacao" />
+			
+			<p:outputLabel for="cidade" value="Cidade:" />
+			<p:inputText id="cidade" value="#{clienteMB.cliente.cidade}" validator="#{clienteMB.validar}" styleClass="campo" />
+			<h:message for="cidade" styleClass="mensagem-validacao" />
+			
+			<p:outputLabel for="uf" value="Estado:" />
+			<p:selectOneMenu id="uf" value="#{clienteMB.cliente.uf}" validator="#{clienteMB.validar}" styleClass="campo-lista">
+				<f:selectItems value="#{clienteMB.listaComboUf}" />
+			</p:selectOneMenu>
+			<h:message for="uf" styleClass="mensagem-validacao" />
+			
+			<p:outputLabel for="cep" value="CEP:" />
+			<p:inputText id="cep" value="#{clienteMB.cliente.cep}" validator="#{clienteMB.validar}" styleClass="campo" />
+			<h:message for="cep" styleClass="mensagem-validacao" />
+			
+			<p:outputLabel for="telefone" value="Telefone:" />
+			<p:inputText id="telefone" value="#{clienteMB.cliente.telefone}" validator="#{clienteMB.validar}" styleClass="campo" />
+			<h:message for="telefone" styleClass="mensagem-validacao" />
+			
+			<p:outputLabel for="email" value="E-mail:" />
+			<p:inputText id="email" value="#{clienteMB.cliente.email}" validator="#{clienteMB.validar}" styleClass="campo" />
+			<h:message for="email" styleClass="mensagem-validacao" />
+		</p:panelGrid>
+	</ui:define>
+
+</ui:composition>

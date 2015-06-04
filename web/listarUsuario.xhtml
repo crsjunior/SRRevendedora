@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./templates/tplConteudo.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:define name="deck">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{sessaoMB.checarLogin()}" />
+		</f:metadata>
+		<h4>Lista de usuários</h4>
+		<p:commandButton value="Novo" ajax="false" immediate="true" action="novoUsuario" />
+	</ui:define>
+
+	<ui:define name="acao">
+		<p:dataTable id="dataTable" var="reg" value="#{usuarioMB.listar()}" paginator="true" rows="6">
+			<f:facet name="header">
+				Paginação
+			</f:facet>
+			<h:inputHidden id="id" value="#{reg.idUsuario}" />
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="NOME" />
+				</f:facet>
+				<h:outputText value="#{reg.nome}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="E-MAIL" />
+				</f:facet>
+				<h:outputText value="#{reg.email}" />
+			</p:column>
+
+			<p:column style="width: 200px;">
+				<f:facet name="header">
+					<h:outputText value="AÇÔES" />
+				</f:facet>
+				<p:commandButton value="Editar" ajax="false" rendered="#{!(reg.idUsuario == 1)}" actionListener="#{usuarioMB.editar(reg)}" action="editarUsuario" style="width: 98px;" />
+				<p:commandButton value="Excluir" ajax="false" rendered="#{!(reg.idUsuario == 1)}" actionListener="#{usuarioMB.excluir(reg)}" action="listarUsuario" onclick="if(!confirm('Deseja mesmo excluir?')) {return false;}" style="width: 98px;" />
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+
+</ui:composition>

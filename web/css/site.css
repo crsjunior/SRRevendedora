@@ -1,0 +1,81 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Arial";
+}
+
+.icone-carro {
+	background: url('../images/carro.png') no-repeat !important;
+	height: 16px;
+	width: 30px;
+	margin-right: 4px;
+}
+
+.icone-vendedor {
+	background: url('../images/vendedor.png') no-repeat !important;
+	height: 16px;
+	width: 30px;
+	margin-right: 4px;
+}
+
+.icone-cliente {
+	background: url('../images/cliente.png') no-repeat !important;
+	height: 16px;
+	width: 30px;
+	margin-right: 4px;
+}
+
+.icone-venda {
+	background: url('../images/venda.png') no-repeat !important;
+	height: 16px;
+	width: 30px;
+	margin-right: 4px;
+}
+
+.conteudo {
+	margin: 10px 40px;
+}
+
+.deck {
+	margin-bottom: 20px;
+	padding: 1px 30px 20px;
+	background-color: lightcoral;
+}
+
+.pnlGrid tr, .pnlGrid td {
+	border: none !important;
+}
+
+label:first-child {
+	width: 100%;
+	display: inline-table;
+	text-align: end !important;
+}
+
+.campo {
+	width: 400px;
+}
+
+.campo-lista {
+	width: 400px !important;
+	margin-top: 1px;
+	/*text-align: left !important;*/
+}
+
+.mensagem-validacao {
+	font-size: 12px;
+	font-weight: bold;
+	color: red;
+}
+
+a.teste {
+	display: inline-table !important;
+}
+
+ul {
+	display: inline-table;
+}

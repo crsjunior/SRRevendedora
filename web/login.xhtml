@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./templates/tplConteudo.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:define name="deck">
+		<h3>Login de usuário</h3>
+	</ui:define>
+
+	<ui:define name="acao">
+		<p:panelGrid columns="3" styleClass="pnlGrid">
+			<p:outputLabel for="email" value="E-mail:" />
+			<p:inputText id="email" value="#{sessaoMB.usuario.email}" validator="#{sessaoMB.validar}" styleClass="campo" />
+			<h:message for="email" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="senha" value="Senha:" />
+			<p:inputText id="senha" type="password" value="#{sessaoMB.usuario.senha}" validator="#{sessaoMB.validar}" styleClass="campo" />
+			<h:message for="senha" styleClass="mensagem-validacao" />
+		</p:panelGrid>
+
+		<p:commandButton value="Entrar" ajax="false" action="#{sessaoMB.efetuarLogin()}" />
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./templates/tplConteudo.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="deck">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{sessaoMB.checarLogin()}" />
+		</f:metadata>
+		<h4>Edição de veículo</h4>
+		<p:commandButton value="Salvar" ajax="false" action="#{veiculoMB.salvar()}" />
+		<p:commandButton value="Cancelar" ajax="false" immediate="true" action="listarVeiculo" />
+	</ui:define>
+
+	<ui:define name="acao">
+		<h:inputHidden id="id" value="#{veiculoMB.veiculo.idVeiculo}">
+			<f:convertNumber integerOnly="true" />
+		</h:inputHidden>
+		<p:panelGrid columns="3" styleClass="pnlGrid">
+			<p:outputLabel for="modelo" value="Modelo:" />
+			<p:inputText id="modelo" value="#{veiculoMB.veiculo.modelo}" validator="#{veiculoMB.validar}" styleClass="campo" />
+			<h:message for="modelo" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="fabricante" value="Fabricante:" />
+			<p:inputText id="fabricante" value="#{veiculoMB.veiculo.fabricante}" validator="#{veiculoMB.validar}" styleClass="campo" />
+			<h:message for="fabricante" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="ano" value="Ano:" />
+			<p:inputText id="ano" value="#{veiculoMB.ano}" required="false" validator="#{veiculoMB.validar}" styleClass="campo" />
+			<h:message for="ano" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="cilindradas" value="Cilindradas:" />
+			<p:inputText id="cilindradas" value="#{veiculoMB.cilindradas}" validator="#{veiculoMB.validar}" styleClass="campo" />
+			<h:message for="cilindradas" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="alarme" value="Alarme:" />
+			<p:selectBooleanCheckbox id="alarme" value="#{veiculoMB.veiculo.comAlarme}" styleClass="campo" />
+			<h:message for="alarme" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="som" value="Som:" />
+			<p:selectBooleanCheckbox id="som" value="#{veiculoMB.veiculo.comSom}" styleClass="campo" />
+			<h:message for="som" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="arcond" value="Ar condicionado:" />
+			<p:selectBooleanCheckbox id="arcond" value="#{veiculoMB.veiculo.comArcond}" styleClass="campo" />
+			<h:message for="arcond" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="dirhid" value="Direção hidráulica:" />
+			<p:selectBooleanCheckbox id="dirhid" value="#{veiculoMB.veiculo.comDirhid}" styleClass="campo" />
+			<h:message for="dirhid" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="abs" value="ABS:" />
+			<p:selectBooleanCheckbox id="abs" value="#{veiculoMB.veiculo.comAbs}" styleClass="campo" />
+			<h:message for="abs" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="airbag" value="AirBag:" />
+			<p:selectBooleanCheckbox id="airbag" value="#{veiculoMB.veiculo.comAirbag}" styleClass="campo" />
+			<h:message for="airbag" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="preco" value="Preço:" />
+			<p:inputText id="preco" value="#{veiculoMB.preco}" validator="#{veiculoMB.validar}" styleClass="campo">
+				<f:convertNumber pattern="#0.00" />
+			</p:inputText>
+			<h:message for="preco" styleClass="mensagem-validacao" />
+		</p:panelGrid>
+	</ui:define>
+
+</ui:composition>

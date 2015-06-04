@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<h:outputStylesheet name="./css/default.css"/>
+		<h:outputStylesheet name="./css/cssLayout.css"/>
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/site.css" />
+		<title>SR Revendedora</title>
+	</h:head>
+
+	<h:body>
+		<f:view>
+			<h:form id="frm" prependId="false">
+				<p:menubar>
+					<p:menuitem value="SR Revendedora" action="index" immediate="true" icon="icone-carro" />
+
+					<p:submenu label="Consultas" rendered="#{sessaoMB.logado}">
+						<p:menuitem value="Consultar vendas" ajax="false" immediate="true" action="listarVenda" icon="icone-venda" />
+						<p:menuitem value="Consultar clientes" ajax="false" immediate="true" action="listarCliente" icon="icone-cliente" />
+						<p:menuitem value="Consultar veículos" ajax="false" immediate="true" action="listarVeiculo" icon="icone-carro" />
+					</p:submenu>
+
+					<p:submenu label="Vendedor" rendered="#{sessaoMB.logado}">
+						<p:menuitem value="Novo cliente" ajax="false" immediate="true" action="novoCliente" icon="icone-cliente" />
+						<p:menuitem value="Nova venda" ajax="false" immediate="true" action="novoVenda" icon="icone-venda" />
+					</p:submenu>
+
+					<p:submenu id="submenu-gerente" label="Gerente" rendered="#{sessaoMB.estaLogadoComoGerente()}" styleClass="menub">
+						<p:menuitem id="teste" value="Novo usuário" ajax="false" immediate="true" action="novoUsuario" icon="icone-vendedor" style="display: inline-table; width: 100px;" />
+						<p:menuitem value="Novo veículo" ajax="false" immediate="true" action="novoVeiculo" icon="icone-carro" />
+						<p:menuitem value="Consultar usuários" ajax="false" immediate="true" action="listarUsuario" icon="icone-vendedor" />
+					</p:submenu>
+
+					<p:menuitem value="Entrar" rendered="#{!sessaoMB.logado}" ajax="false" immediate="true" action="login" icon="ui-icon-locked" />
+					<p:menuitem value="Sair [#{sessaoMB.usuario.nome}]" rendered="#{sessaoMB.logado}" ajax="false" immediate="true" action="#{sessaoMB.efetuarLogoff()}" icon="ui-icon-unlocked" />
+				</p:menubar>
+
+				<ui:insert name="conteudo" />
+			</h:form>
+		</f:view>
+	</h:body>
+
+</html>

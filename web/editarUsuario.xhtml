@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./templates/tplConteudo.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="deck">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{sessaoMB.checarLogin()}" />
+		</f:metadata>
+		<h4>Edição de usuário</h4>
+		<p:commandButton value="Salvar" ajax="false" action="#{usuarioMB.salvar()}" />
+		<p:commandButton value="Cancelar" ajax="false" immediate="true" action="listarUsuario" />
+	</ui:define>
+
+	<ui:define name="acao">
+		<h:inputHidden id="id" value="#{usuarioMB.usuario.idUsuario}">
+			<f:convertNumber integerOnly="true" />
+		</h:inputHidden>
+		<p:panelGrid columns="3" styleClass="pnlGrid">
+			<p:outputLabel for="nome">Nome:</p:outputLabel>
+			<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" validator="#{usuarioMB.validar}" styleClass="campo" />
+			<h:message for="nome" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="email">E-mail:</p:outputLabel>
+			<p:inputText id="email" value="#{usuarioMB.usuario.email}" validator="#{usuarioMB.validar}" styleClass="campo" />
+			<h:message for="email" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="senha">Senha:</p:outputLabel>
+			<p:inputText id="senha" type="password" value="#{usuarioMB.usuario.senha}" validator="#{usuarioMB.validar}" styleClass="campo" />
+			<h:message for="senha" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="senhaConfirma">Repita a senha:</p:outputLabel>
+			<p:inputText id="senhaConfirma" type="password" value="#{usuarioMB.senhaConfirma}" validator="#{usuarioMB.validar}" styleClass="campo" />
+			<h:message for="senhaConfirma" styleClass="mensagem-validacao" />
+
+			<p:outputLabel for="gerente" value="É gerente:" />
+			<p:selectBooleanCheckbox id="gerente" value="#{usuarioMB.usuario.gerente}" styleClass="campo" />
+			<h:message for="gerente" styleClass="mensagem-validacao" />
+		</p:panelGrid>
+	</ui:define>
+
+</ui:composition>
